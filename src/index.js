@@ -2,7 +2,7 @@ import 'phaser';
 import background from './assets/background.png';
 //import wizardWalk from './assets/wizardWalk.png';
 import Wizard from './modules/characters/wizard';
-//import gameMainScene from './modules/scenes/gameMainScene';
+import GameMainScene from './modules/scenes/gameMainScene';
 
 var config = {
   type: Phaser.AUTO,
@@ -15,11 +15,12 @@ var config = {
       debug: false
     }
   },
-  scene: {
-    preload: preload,
-    create: create,
-    update: update
-  }
+  scene: [
+    GameMainScene
+    // preload: preload,
+    // create: create,
+    // update: update
+  ]
 };
 
 var game = new Phaser.Game(config);

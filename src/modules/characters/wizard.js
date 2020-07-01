@@ -13,8 +13,8 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
     // this.setData("type", type);
     // this.setData("isDead", false);
   }
-  static load(x) {
-    x.load.spritesheet('wizardWalking', wizardWalk, { frameWidth: 409, frameHeight: 420 });
+  static load(scene) {
+    scene.load.spritesheet('wizardWalking', wizardWalk, { frameWidth: 409, frameHeight: 420 });
   }
   animation(keySide) {
     if(keySide == 'left') {
