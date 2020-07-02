@@ -58,7 +58,7 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
       }
     }
   }
-  moves(direction,scene) {
+  moves(direction) {
     if(this.attack == true) {
       return;
     }
