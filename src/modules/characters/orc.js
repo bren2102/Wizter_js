@@ -1,5 +1,7 @@
 import 'phaser';
 import orcWalk from '../../assets/orcWalk2.png';
+import orcDie from '../../assets/orcDies.png';
+import orcAttack from '../../assets/orcAttack.png';
 
 class Orc extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y, key){
@@ -17,19 +19,43 @@ class Orc extends Phaser.Physics.Arcade.Sprite {
   }
   static load(scene) {
     scene.load.spritesheet('orcWalking', orcWalk, { frameWidth: 450, frameHeight: 450 });
+    scene.load.spritesheet('orcDying', orcDie, { frameWidth: 450, frameHeight: 450 });
+    scene.load.spritesheet('orcAttacking', orcAttack, { frameWidth: 450, frameHeight: 450 });
   }
   animation() {
     this.scene.anims.create({
       key: 'leftwalk',
       frames: this.scene.anims.generateFrameNumbers('orcWalking', { start: 0, end: 23 }),
-      frameRate: 10,
+      frameRate: 100,
       repeat: -1
+    });
+    this.scene.anims.create({
+      key: 'orcdies',
+      frames: this.scene.anims.generateFrameNumbers('orcDying', { start: 0, end: 14 }),
+      frameRate: 50,
+      repeat: 0
+    });
+    this.scene.anims.create({
+      key: 'attacks',
+      frames: this.scene.anims.generateFrameNumbers('orcAttacking', { start: 0, end: 11 }),
+      frameRate: 50,
+      repeat: 0
     });
   }
   move() {
     this.flipX = true;
     this.anims.play('leftwalk', true);
     this.setVelocityX(-500);
+  }
+  shooted() {
+    this.flipX = true;
+    this.anims.play('orcdies', true);
+      this.setVelocityX(0);
+  }
+  attacks() {
+    this.flipX = true;
+    this.anims.play('attacks', true);
+    this.setVelocityX(-50)
   }
 }
 export default Orc;

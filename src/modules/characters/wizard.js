@@ -1,7 +1,8 @@
 import 'phaser';
-import wizardWalk from '../../assets/wizardWalk3.png';
+import wizardWalk from '../../assets/wizardWalk.png';
 import Ice from '../characters/ice';
 import wizardMagic from '../../assets/wizardMagic.png';
+import wizardDie from '../../assets/wizardDie.png';
 
 class Wizard extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y, key) {
@@ -11,6 +12,8 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
     this.scene.physics.world.enableBody(this, 0);
     this.key = key;
     this.attack = false;
+    this.alive = true;
+    this.bullets = this.scene.add.group();
     this.setSize(350,380);
     this.setScale(.4);
     this.setBounce(0.2);
@@ -21,6 +24,7 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
   static load(scene) {
     scene.load.spritesheet('wizardWalking', wizardWalk, { frameWidth: 698, frameHeight: 483 });
     scene.load.spritesheet('wizardMagic', wizardMagic, { frameWidth: 698, frameHeight: 483 });
+    scene.load.spritesheet('wizardDie', wizardDie, { frameWidth: 373, frameHeight: 411 });
   }
   animation() {
     this.scene.anims.create({
@@ -46,42 +50,55 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
       frameRate: 50,
       repeat: 0
     });
+    this.scene.anims.create({
+      key: 'dies',
+      frames: this.scene.anims.generateFrameNumbers('wizardDie', { start: 0, end: 4 }),
+      frameRate: 50,
+      repeat: 0
+    });
 
     this.on('animationcomplete', this.attackingComplete, this)
   }
   attackingComplete(animation, frame) {
-    switch(animation.key){
+    switch(animation.key) {
       case 'space': {
         this.attack = false;
-        this.ice = new Ice(this.scene, this.body.x + ((this.flipX)? 0 : 200), this.body.y + (this.body.height / 2), 'iceShooting', this.flipX);
-        this.ice.shooting();
+        const ice = new Ice(this.scene, this.body.x + ((this.flipX)? 0 : 200), this.body.y + (this.body.height / 2), 'iceShooting', this.flipX);
+        ice.shooting();
+        this.bullets.add(ice);
       }
     }
+  }
+  dies() {
+    this.anims.play('dies', true);
+    this.setVelocityX(0);
+    this.alive = false;
   }
   moves(direction) {
     if(this.attack == true) {
       return;
     }
-    if (direction == 'space') {
-      this.setSize(350,380);
-      this.setVelocityX(0);
-      this.anims.play('space', true);
-      this.attack = true;
-      
-    }
-    if(direction == 'left') {
-      this.setVelocityX(-160);
-      this.flipX = true;
-      this.anims.play('left', true);
-    }
-    if(direction == 'right') {
-      this.setVelocityX(160);
-      this.flipX = false;
-      this.anims.play('right', true);
-    }
-    if(direction == 'turn') {
-      this.setVelocityX(0);
-      this.anims.play('turn');
+    if (this.alive == true) {
+      if (direction == 'space') {
+        this.setSize(350,380);
+        this.anims.play('space', true);
+        this.attack = true;
+        this.setVelocityX(0);
+      }
+      if(direction == 'left') {
+        this.setVelocityX(-160);
+        this.flipX = true;
+        this.anims.play('left', true);
+      }
+      if(direction == 'right') {
+        this.setVelocityX(160);
+        this.flipX = false;
+        this.anims.play('right', true);
+      }
+      if(direction == 'turn') {
+        this.anims.play('turn');
+        this.setVelocityX(0);
+      }
     }
   }
 }
