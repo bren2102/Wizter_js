@@ -2,8 +2,9 @@ import 'phaser';
 import orcWalk from '../../assets/orcWalk2.png';
 import orcDie from '../../assets/orcDies.png';
 import orcAttack from '../../assets/orcAttack.png';
+import Enemy from '../characters/enemy';
 
-class Orc extends Phaser.Physics.Arcade.Sprite {
+class Orc extends Enemy {
   constructor(scene, x, y, key){
     super(scene, x, y, key);
     this.scene = scene;
@@ -16,7 +17,9 @@ class Orc extends Phaser.Physics.Arcade.Sprite {
     this.setBounce(0.2);
     this.setCollideWorldBounds(true);
     this.animation();
-    // this.move();
+    this.moveId = 'orcWalks';
+    this.dieId = 'orcDies';
+    this.attackId = 'orcAttacks';
   }
   static load(scene) {
     scene.load.spritesheet('orcWalking', orcWalk, { frameWidth: 450, frameHeight: 450 });
@@ -43,21 +46,21 @@ class Orc extends Phaser.Physics.Arcade.Sprite {
       repeat: 0
     });
   }
-  move() {
-    this.flipX = true;
-    this.anims.play('orcWalks', true);
-    this.setVelocityX(-500);
-  }
-  shooted() {
-    this.flipX = true;
-    this.anims.play('orcDies', true);
-    this.setVelocityX(0);
-    this.alive = false;
-  }
-  attacks() {
-    this.flipX = true;
-    this.anims.play('orcAttacks', true);
-    this.setVelocityX(-50)
-  }
+  // move() {
+  //   this.flipX = true;
+  //   this.anims.play('orcWalks', true);
+  //   this.setVelocityX(-500);
+  // }
+  // shooted() {
+  //   this.flipX = true;
+  //   this.anims.play('orcDies', true);
+  //   this.setVelocityX(0);
+  //   this.alive = false;
+  // }
+  // attacks() {
+  //   this.flipX = true;
+  //   this.anims.play('orcAttacks', true);
+  //   this.setVelocityX(-50)
+  // }
 }
 export default Orc;

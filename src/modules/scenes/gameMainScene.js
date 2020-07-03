@@ -3,6 +3,8 @@ import Wizard from '../characters/wizard';
 import Orc from '../characters/orc';
 import Goblin from '../characters/goblin';
 import Ice from '../characters/ice';
+import Enemy from '../characters/enemy';
+
 class GameMainScene extends Phaser.Scene {
   constructor() {
     super({ key: 'gameMainScene' });
@@ -10,6 +12,7 @@ class GameMainScene extends Phaser.Scene {
     this.orc;
     this.ice;
     this.goblin;
+    this.enemies;
   }
   preload() {
     this.load.image('gameBackground1', gameBackground1);
@@ -27,10 +30,13 @@ class GameMainScene extends Phaser.Scene {
     
     this.wizard = new Wizard(this, 100, 450, 'wizardWalking');
     this.wizard.animation();
-    this.orc = new Orc(this, 950, 500, 'orcWalking');
-    this.goblin = new Goblin(this, 650, 500, 'goblinRunning');
+    this.orc = new Orc(this, 950, 450, 'orcWalking');
+    this.goblin = new Goblin(this, 650, 450, 'goblinRunning');
     this.orc.move();
     this.goblin.move();
+    this.enemies = this.add.group();
+    this.enemies.add(this.orc);
+    this.enemies.add(this.goblin);
     this.physics.add.collider(this.orc, this.wizard,
       function(orc, wizard) {
         wizard.dies();
@@ -41,28 +47,22 @@ class GameMainScene extends Phaser.Scene {
         wizard.dies();
         goblin.attacks();
       });
-    const killOrc = (orc, ice) => {
-      orc.shooted();
-      ice.destroy();
-      this.time.addEvent({
-        delay: 1000,
-        callback: function() {
-          orc.destroy();
-        },
-      });
-    }
-    const killGoblin = (goblin, ice) => {
-      goblin.shooted();
+    const killEnemies = (enemy, ice) => {
+      enemy.shooted();
       ice.destroy();
       this.time.addEvent({
         delay: 800,
         callback: function () {
-          goblin.destroy();
+          enemy.destroy();
         },
       });
     }
-    this.physics.add.collider(this.orc, this.wizard.bullets, killOrc);
-    this.physics.add.collider(this.goblin, this.wizard.bullets, killGoblin);
+    // const moveEnemies = (orc, goblin) => {
+    //   goblin.move();
+    //   orc.move();
+    // }
+    //this.physics.add.collider(this.enemies, this.enemies.scene, moveEnemies)
+    this.physics.add.collider(this.enemies, this.wizard.bullets, killEnemies);
   }
   update() {
     const cursors = this.input.keyboard.createCursorKeys();

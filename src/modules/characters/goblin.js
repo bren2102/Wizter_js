@@ -1,9 +1,10 @@
-import 'phaser';
+//import 'phaser';
+import Enemy from '../characters/enemy';
 import goblinRun from '../../assets/goblinRun.png';
 import goblinKick from '../../assets/goblinKick.png';
 import goblinDies from '../../assets/goblinDies.png';
 
-class Goblin extends Phaser.Physics.Arcade.Sprite {
+class Goblin extends Enemy {
   constructor(scene, x, y, key) {
     super(scene, x, y, key);
     this.scene = scene;
@@ -16,6 +17,10 @@ class Goblin extends Phaser.Physics.Arcade.Sprite {
     this.setBounce(0.2);
     this.setCollideWorldBounds(true);
     this.animation();
+    this.iddleId = 'goblinIddle';
+    this.moveId = 'goblinRuns';
+    this.dieId = 'goblinDies';
+    this.attackId = 'goblinKicks';
   }
   static load(scene) {
     scene.load.spritesheet('goblinRunning', goblinRun, { frameWidth: 450, frameHeight: 450 });
@@ -41,22 +46,11 @@ class Goblin extends Phaser.Physics.Arcade.Sprite {
       frameRate: 100,
       repeat: 0
     });
-  }
-  move() {
-    this.flipX = true;
-    this.anims.play('goblinRuns', true);
-    this.setVelocityX(-500);
-  }
-  shooted() {
-    this.flipX = true;
-    this.anims.play('goblinDies', true);
-    this.setVelocityX(0);
-    this.alive = false;
-  }
-  attacks() {
-    this.flipX = true;
-    this.anims.play('goblinKicks', true);
-    this.setVelocityX(-50)
+    this.scene.anims.create({
+      key: 'goblinIddle',
+      frames: [{ key: 'goblinRunning', frame: 0 }],
+      frameRate: 0
+    });
   }
 }
 
