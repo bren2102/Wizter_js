@@ -65,11 +65,15 @@ class GameMainScene extends Phaser.Scene {
       ice.destroy();
       this.time.addEvent({
         delay: 600,
+        callbackScope: this,
         callback: function () {
           enemy.destroy();
+          this.wizard.setPoints(15);          
+          console.log(this.wizard.getPoints());
         },
       });
     }
+    
     this.physics.add.collider(this.enemies, this.wizard.bullets, killEnemies);
   }
   update() {
