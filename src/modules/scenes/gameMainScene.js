@@ -1,4 +1,4 @@
-import gameBackground1 from '../../assets/background.png';
+import background1 from '../../assets/background.png';
 import Wizard from '../characters/wizard';
 import Orc from '../characters/orc';
 import Goblin from '../characters/goblin';
@@ -13,25 +13,35 @@ class GameMainScene extends Phaser.Scene {
     this.ice;
     this.goblin;
     this.enemies;
+    this.backgroundImg1;
+    this.backgroundImg2;
   }
   preload() {
-    this.load.image('gameBackground1', gameBackground1);
+    this.load.image('gamethis.background1', background1);
+    this.load.image('gamethis.background2', background1);
     Wizard.load(this);
     Ice.load(this);
     Orc.load(this);
     Goblin.load(this);
   }
   create() {
-    let backgroundImg1 = this.add.image(0, 0, 'gameBackground1');
-    backgroundImg1.displayWidth = 960;
-    backgroundImg1.displayHeight = 540;
-    backgroundImg1.setOrigin(0, 0);
-    backgroundImg1.setScrollFactor(0);
-    
+    this.backgroundImg1 = this.physics.add.image(0, this.game.scale.height / 2, 'gamethis.background1');
+    this.backgroundImg2 = this.physics.add.image(0, this.game.scale.height / 2, 'gamethis.background2');
+    this.backgroundImg1.body.setAllowGravity(false);
+    this.backgroundImg2.body.setAllowGravity(false);
+    this.backgroundImg1.displayWidth = 1200;
+    this.backgroundImg1.displayHeight = 540;
+    this.backgroundImg1.x = (this.game.scale.width /2);
+    this.backgroundImg2.displayWidth = 1200;
+    this.backgroundImg2.displayHeight = 540;
+    this.backgroundImg2.x = this.game.scale.width /2 + this.backgroundImg2.displayWidth;
+    this.backgroundImg1.setVelocityX(-200);
+    this.backgroundImg2.setVelocityX(-200);
+        
     this.wizard = new Wizard(this, 100, 450, 'wizardWalking');
     this.wizard.animation();
-    this.orc = new Orc(this, 950, 450, 'orcWalking');
-    this.goblin = new Goblin(this, 650, 450, 'goblinRunning');
+    this.orc = new Orc(this, 850, 500, 'orcWalking');
+    this.goblin = new Goblin(this, 650, 500, 'goblinRunning');
     this.orc.move();
     this.goblin.move();
     this.enemies = this.add.group();
@@ -51,7 +61,7 @@ class GameMainScene extends Phaser.Scene {
       enemy.shooted();
       ice.destroy();
       this.time.addEvent({
-        delay: 800,
+        delay: 600,
         callback: function () {
           enemy.destroy();
         },
@@ -63,13 +73,24 @@ class GameMainScene extends Phaser.Scene {
     // }
     //this.physics.add.collider(this.enemies, this.enemies.scene, moveEnemies)
     this.physics.add.collider(this.enemies, this.wizard.bullets, killEnemies);
+    //this.cameras.main.setBounds(0, 0, this.displayWidth * 3, this.displayHeight);
   }
   update() {
+    if (this.backgroundImg1.x <= -(this.backgroundImg1.displayWidth / 2)) {
+      this.backgroundImg1.x = this.game.scale.width / 2 + this.backgroundImg2.displayWidth;
+     } else if(this.backgroundImg2.x <= -(this.backgroundImg2.displayWidth / 2)) {
+      this.backgroundImg2.x = this.game.scale.width / 2 + this.backgroundImg1.displayWidth;
+    }
+    //console.log(this.backgroundImg1.x);
     const cursors = this.input.keyboard.createCursorKeys();
+    // const cam = this.cameras.main;
+    // const camSpeed = 1;
     if (cursors.left.isDown) {
       this.wizard.moves('left');
+      //cam.scrollX -= camSpeed;
     } else if (cursors.right.isDown) {
       this.wizard.moves('right');
+      //cam.scrollX += camSpeed;
     } else {
       this.wizard.moves('turn');
     }

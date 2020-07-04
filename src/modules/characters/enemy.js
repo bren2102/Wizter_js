@@ -25,7 +25,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   move() {
     this.flipX = true;
     this.anims.play(this.moveId, true);
-    this.setVelocityX(-500);
+    this.setVelocityX(-100);
   }
   shooted() {
     this.flipX = true;

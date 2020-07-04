@@ -17,7 +17,6 @@ class Goblin extends Enemy {
     this.setBounce(0.2);
     this.setCollideWorldBounds(true);
     this.animation();
-    this.iddleId = 'goblinIddle';
     this.moveId = 'goblinRuns';
     this.dieId = 'goblinDies';
     this.attackId = 'goblinKicks';
@@ -31,7 +30,7 @@ class Goblin extends Enemy {
     this.scene.anims.create({
       key: 'goblinRuns',
       frames: this.scene.anims.generateFrameNumbers('goblinRunning', {start: 0, end: 11}),
-      frameRate: 300,
+      frameRate: 50,
       repeat: -1
     });
     this.scene.anims.create({
@@ -43,13 +42,8 @@ class Goblin extends Enemy {
     this.scene.anims.create({
       key: 'goblinDies',
       frames: this.scene.anims.generateFrameNumbers('goblinDying', { start: 0, end: 14 }),
-      frameRate: 100,
+      frameRate: 50,
       repeat: 0
-    });
-    this.scene.anims.create({
-      key: 'goblinIddle',
-      frames: [{ key: 'goblinRunning', frame: 0 }],
-      frameRate: 0
     });
   }
 }

@@ -30,7 +30,7 @@ class Orc extends Enemy {
     this.scene.anims.create({
       key: 'orcWalks',
       frames: this.scene.anims.generateFrameNumbers('orcWalking', { start: 0, end: 23 }),
-      frameRate: 100,
+      frameRate: 200,
       repeat: -1
     });
     this.scene.anims.create({
