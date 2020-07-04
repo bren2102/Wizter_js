@@ -35,27 +35,30 @@ class GameMainScene extends Phaser.Scene {
     this.backgroundImg2.displayWidth = 1200;
     this.backgroundImg2.displayHeight = 540;
     this.backgroundImg2.x = this.game.scale.width /2 + this.backgroundImg2.displayWidth;
-    this.backgroundImg1.setVelocityX(-200);
-    this.backgroundImg2.setVelocityX(-200);
-        
+    this.backgroundImg1.setVelocityX(-100);
+    this.backgroundImg2.setVelocityX(-100);
+
     this.wizard = new Wizard(this, 100, 450, 'wizardWalking');
     this.wizard.animation();
-    this.orc = new Orc(this, 850, 500, 'orcWalking');
-    this.goblin = new Goblin(this, 650, 500, 'goblinRunning');
-    this.orc.move();
-    this.goblin.move();
     this.enemies = this.add.group();
-    this.enemies.add(this.orc);
-    this.enemies.add(this.goblin);
-    this.physics.add.collider(this.orc, this.wizard,
-      function(orc, wizard) {
+
+    this.time.addEvent({
+      delay: 2500,
+      loop: true,
+      callbackScope: this,
+      callback: function(){
+        let orc = new Orc(this, 1150, 500, 'orcWalking');
+        orc.move();
+        this.enemies.add(orc);
+        let goblin = new Goblin(this, 950, 500, 'goblinRunning');
+        goblin.move();
+        this.enemies.add(goblin);
+      }
+    });
+    this.physics.add.collider(this.enemies, this.wizard,
+      function(enemy, wizard) {
         wizard.dies();
-        orc.attacks();
-      });
-    this.physics.add.collider(this.goblin, this.wizard,
-      function (goblin, wizard) {
-        wizard.dies();
-        goblin.attacks();
+        enemy.attacks();
       });
     const killEnemies = (enemy, ice) => {
       enemy.shooted();
@@ -67,30 +70,19 @@ class GameMainScene extends Phaser.Scene {
         },
       });
     }
-    // const moveEnemies = (orc, goblin) => {
-    //   goblin.move();
-    //   orc.move();
-    // }
-    //this.physics.add.collider(this.enemies, this.enemies.scene, moveEnemies)
     this.physics.add.collider(this.enemies, this.wizard.bullets, killEnemies);
-    //this.cameras.main.setBounds(0, 0, this.displayWidth * 3, this.displayHeight);
   }
   update() {
     if (this.backgroundImg1.x <= -(this.backgroundImg1.displayWidth / 2)) {
-      this.backgroundImg1.x = this.game.scale.width / 2 + this.backgroundImg2.displayWidth;
+      this.backgroundImg1.x = this.backgroundImg2.x + this.backgroundImg2.displayWidth;
      } else if(this.backgroundImg2.x <= -(this.backgroundImg2.displayWidth / 2)) {
-      this.backgroundImg2.x = this.game.scale.width / 2 + this.backgroundImg1.displayWidth;
+      this.backgroundImg2.x = this.backgroundImg1.x + this.backgroundImg1.displayWidth;
     }
-    //console.log(this.backgroundImg1.x);
     const cursors = this.input.keyboard.createCursorKeys();
-    // const cam = this.cameras.main;
-    // const camSpeed = 1;
     if (cursors.left.isDown) {
       this.wizard.moves('left');
-      //cam.scrollX -= camSpeed;
     } else if (cursors.right.isDown) {
       this.wizard.moves('right');
-      //cam.scrollX += camSpeed;
     } else {
       this.wizard.moves('turn');
     }
