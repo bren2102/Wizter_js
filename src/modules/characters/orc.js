@@ -17,6 +17,7 @@ class Orc extends Enemy {
     this.setBounce(0.2);
     this.setCollideWorldBounds(true);
     this.animation();
+    this.moveVelocity = -100;
     this.moveId = 'orcWalks';
     this.dieId = 'orcDies';
     this.attackId = 'orcAttacks';

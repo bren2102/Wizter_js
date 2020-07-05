@@ -2,7 +2,10 @@ import 'phaser';
 import background from './assets/background.png';
 //import wizardWalk from './assets/wizardWalk.png';
 import Wizard from './modules/characters/wizard';
+import MainMainScene from './modules/scenes/menuMainScene';
 import GameMainScene from './modules/scenes/gameMainScene';
+import MenuMainScene from './modules/scenes/menuMainScene';
+import GameOverScene from './modules/scenes/gameOverScene';
 
 var config = {
   type: Phaser.AUTO,
@@ -16,7 +19,9 @@ var config = {
     }
   },
   scene: [
-    GameMainScene
+    MenuMainScene,
+    GameMainScene,
+    GameOverScene
     // preload: preload,
     // create: create,
     // update: update

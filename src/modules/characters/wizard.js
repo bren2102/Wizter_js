@@ -12,21 +12,19 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
     this.scene.physics.world.enableBody(this, 0);
     this.key = key;
     this.attack = false;
-    this.alive = true;
-    this.points = 0;
+    this.isDead = false;
+    this.score = 0;
     this.bullets = this.scene.add.group();
     this.setSize(350,380);
     this.setScale(.4);
     this.setBounce(0.2);
     this.setCollideWorldBounds(true);
-    // this.setData("type", type);
-    // this.setData("isDead", false);
   }
-  setPoints(pts) {
-    this.points += pts;
+  setScore(pts) {
+    this.score += pts;
   }
-  getPoints() {
-    return this.points;
+  getScore() {
+    return this.score;
   }
   static load(scene) {
     scene.load.spritesheet('wizardWalking', wizardWalk, { frameWidth: 698, frameHeight: 483 });
@@ -79,13 +77,13 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
   dies() {
     this.anims.play('dies', true);
     this.setVelocityX(0);
-    this.alive = false;
+    this.isDead = true;
   }
   moves(direction) {
     if(this.attack == true) {
       return;
     }
-    if (this.alive == true) {
+    if (this.isDead == false) {
       if (direction == 'space') {
         this.setSize(350,380);
         this.anims.play('space', true);

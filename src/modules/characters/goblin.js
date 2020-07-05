@@ -1,7 +1,7 @@
 //import 'phaser';
 import Enemy from '../characters/enemy';
 import goblinRun from '../../assets/goblinRun.png';
-import goblinKick from '../../assets/goblinKick.png';
+import goblinAttack from '../../assets/goblinAttack.png';
 import goblinDies from '../../assets/goblinDies.png';
 
 class Goblin extends Enemy {
@@ -17,13 +17,14 @@ class Goblin extends Enemy {
     this.setBounce(0.2);
     this.setCollideWorldBounds(true);
     this.animation();
+    this.moveVelocity = -180;
     this.moveId = 'goblinRuns';
     this.dieId = 'goblinDies';
     this.attackId = 'goblinKicks';
   }
   static load(scene) {
     scene.load.spritesheet('goblinRunning', goblinRun, { frameWidth: 450, frameHeight: 450 });
-    scene.load.spritesheet('goblinKicking', goblinKick,{ frameWidth: 450, frameHeight: 450});
+    scene.load.spritesheet('goblinAttacking', goblinAttack,{ frameWidth: 450, frameHeight: 450});
     scene.load.spritesheet('goblinDying', goblinDies, { frameWidth: 450, frameHeight: 450 });
   }
   animation(){
@@ -34,8 +35,8 @@ class Goblin extends Enemy {
       repeat: -1
     });
     this.scene.anims.create({
-      key: 'goblinKicks',
-      frames: this.scene.anims.generateFrameNumbers('goblinKicking', { start: 0, end: 11 }),
+      key: 'goblinAttacks',
+      frames: this.scene.anims.generateFrameNumbers('goblinAttacking', { start: 0, end: 11 }),
       frameRate: 200,
       repeat: 0
     });

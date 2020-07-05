@@ -7,6 +7,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.scene.physics.world.enableBody(this, 0);
     this.key = key;
     this.dead = false;
+    this.moveVelocity;
     this.iddleId;
     this.moveId;
     this.attackId;
@@ -28,7 +29,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   move() {
     this.flipX = true;
     this.anims.play(this.moveId, true);
-    this.setVelocityX(-100);
+    this.setVelocityX(this.moveVelocity);
   }
   shooted() {
     this.flipX = true;
