@@ -23,9 +23,10 @@ var config = {
     }
   },
   scene: [
+    GameOverScene,
     MenuMainScene,
     GameMainScene,
-    GameOverScene,
+    
     RecordScene
     // preload: preload,
     // create: create,

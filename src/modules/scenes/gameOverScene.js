@@ -1,5 +1,6 @@
 import gOverBackground from '../../assets/gameOverBackground.png';
 import scoreInput from '../../assets/html/scoreInput.html'
+import apiData from '../../api.js';
 class GameOverScene extends Phaser.Scene {
   constructor() {
     super({ key: 'gameOverScene' });
@@ -9,6 +10,7 @@ class GameOverScene extends Phaser.Scene {
   }
   create() {
     //this.scene.start('gameOverScene');
+    apiData.saveData('brenda', 500).then((result) => {console.log(result)});
     this.gOverBackgroundImg = this.add.image(0, this.game.scale.height / 2, 'gOverBackground')
     this.gOverBackgroundImg.x = (this.game.scale.width / 2);
 
