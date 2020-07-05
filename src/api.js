@@ -1,11 +1,15 @@
+/* eslint-disable */
 const apiData = (() => {
   const gameId = 'SOvyXC9TPpxsz1qmobKj';
   const request = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores`;
   const checkData = (name, score) => {
     return new Promise((resolve, reject) => {
-      fetch(request).then(response => response.json().then((json) => {
-        console.log(json);
-        console.log('entra');
+      fetch(request)
+      .then(response => response.json()
+      .then((json) => {
+        name = json.user;
+        score = json.score;
+        resolve(name, score);
       }))
     })
   }
@@ -24,3 +28,4 @@ const apiData = (() => {
 })();
 
 export default apiData;
+/* eslint-enable */

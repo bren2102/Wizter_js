@@ -1,5 +1,8 @@
+/* eslint-disable */
 const path = require('path');
+
 const express = require('express');
+
 const app = express(),
   DIST_DIR = __dirname + '/dist',
   HTML_FILE = path.join(DIST_DIR, 'index.html');
@@ -15,3 +18,4 @@ app.listen(PORT, () => {
   console.log(`App listening to ${PORT}....`);
   console.log('Press Ctrl+C to quit.');
 });
+/* eslint-enable */
