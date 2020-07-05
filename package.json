@@ -23,6 +23,7 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-scss": "^3.17.2",

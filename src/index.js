@@ -2,15 +2,19 @@ import 'phaser';
 import background from './assets/background.png';
 //import wizardWalk from './assets/wizardWalk.png';
 import Wizard from './modules/characters/wizard';
-import MainMainScene from './modules/scenes/menuMainScene';
 import GameMainScene from './modules/scenes/gameMainScene';
 import MenuMainScene from './modules/scenes/menuMainScene';
 import GameOverScene from './modules/scenes/gameOverScene';
+import RecordScene from './modules/scenes/recordScene';
 
 var config = {
   type: Phaser.AUTO,
   width: 1200,//960
   height: 540,
+  parent: 'divld',
+  dom: {
+    createContainer: true,
+  },
   physics: {
     default: 'arcade',
     arcade: {
@@ -21,7 +25,8 @@ var config = {
   scene: [
     MenuMainScene,
     GameMainScene,
-    GameOverScene
+    GameOverScene,
+    RecordScene
     // preload: preload,
     // create: create,
     // update: update
