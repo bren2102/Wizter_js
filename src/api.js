@@ -2,14 +2,15 @@
 const apiData = (() => {
   const gameId = 'SOvyXC9TPpxsz1qmobKj';
   const request = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores`;
-  const checkData = (name, score) => {
+  const checkData = () => {
     return new Promise((resolve, reject) => {
       fetch(request)
       .then(response => response.json()
       .then((json) => {
-        name = json.user;
-        score = json.score;
-        resolve(name, score);
+        // name = json.user;
+        // score = json.score;
+        // console.log(json);
+        resolve(json.result);
       }))
     })
   }

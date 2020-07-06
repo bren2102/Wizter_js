@@ -16,21 +16,37 @@ class RecordScene extends Phaser.Scene {
   create() {
     this.recordBackgroundImg = this.add.image(0, this.game.scale.height / 2, 'recordBackground');
     this.recordBackgroundImg.x = (this.game.scale.width / 2);
+    this.text = this.add.text(620, 450, 'Press A to go to the Menu', {
+      font: '20px Arial',
+      fill: 'white',
+    });
     const div = this.add.dom((this.game.scale.width / 2) + 240,
-      (this.game.scale.height / 2) ).createFromHTML(recordList);
-    const player = document.getElementById('player');
-    const namePlayer = document.getElementById('nameRecord');
-    const scorePlayer = document.getElementById('scoreRecord');
-    apiData.checkData(players).then((result) => { console.log(result) });
+      (this.game.scale.height / 2) - 20 ).createFromHTML(recordList);
+    const scroll = document.getElementById('scrollSection');
+
+    apiData.checkData().then((result) => { 
+      for(let i = 0; i < result.length; i += 1 ) {
+        const playerDiv = document.createElement('div');
+        playerDiv.classList.add('player');
+        scroll.appendChild(playerDiv);
+
+        const namePlayer = document.createElement('h3');
+        namePlayer.classList.add('nameRecord');
+        playerDiv.appendChild(namePlayer);
+        playerDiv.textContent = result[i].user;
+
+        const scorePlayer = document.createElement('h3');
+        scorePlayer.classList.add('scoreRecord');
+        playerDiv.appendChild(scorePlayer);
+        scorePlayer.textContent = result[i].score;
+      }
+    });
   }
 
   update() {
     const keys = this.input.keyboard.addKeys('S, A');
     if (keys.A.isDown) {
       this.scene.start('menuMainScene');
-    }
-    if (keys.S.isDown) {
-      this.scene.start('gameMainScene');
     }
   }
 }
