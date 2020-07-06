@@ -39,11 +39,8 @@ class MenuMainScene extends Phaser.Scene {
     const instructionButton = document.getElementById('instructionButton');
     instructionButton.src = instButton;
     instructionButton.addEventListener('click', () => {
-      this.scene.start('instructionsScene')
+      this.scene.start('instructionsScene');
     });
   }
-
-  // update() {
-  // }
 }
 export default MenuMainScene;

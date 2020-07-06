@@ -4,7 +4,7 @@ import apiData from '../../api';
 
 /* eslint-disable */
 class RecordScene extends Phaser.Scene {
-  /* eslint-enable */
+  
   constructor() {
     super({ key: 'recordScene' });
   }
@@ -22,10 +22,11 @@ class RecordScene extends Phaser.Scene {
     });
     const div = this.add.dom((this.game.scale.width / 2) + 240,
       (this.game.scale.height / 2) - 20 ).createFromHTML(recordList);
+    /* eslint-enable */
     const scroll = document.getElementById('scrollSection');
 
-    apiData.checkData().then((result) => { 
-      for(let i = 0; i < result.length; i += 1 ) {
+    apiData.checkData().then((result) => {
+      for (let i = 0; i < result.length; i += 1) {
         const playerDiv = document.createElement('div');
         playerDiv.classList.add('player');
         scroll.appendChild(playerDiv);

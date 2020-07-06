@@ -6,13 +6,13 @@ import Goblin from '../characters/goblin';
 
 /* eslint-disable */
 class InstructionsScene extends Phaser.Scene {
-  /* eslint-enable */
   constructor() {
     super({ key: 'instructionsScene' });
     this.wizard;
     this.orc;
     this.goblin;
     this.enemies;
+    /* eslint-enable */
   }
 
   preload() {
@@ -30,7 +30,7 @@ class InstructionsScene extends Phaser.Scene {
     this.home = this.add.image(1080, 100, 'homeButton').setInteractive();
     this.home.on('pointerdown', () => {
       this.scene.start('menuMainScene');
-    })
+    });
 
     this.wizard = new Wizard(this, 650, 320, 'wizardWalking');
     this.wizard.body.setAllowGravity(false);
@@ -54,7 +54,6 @@ class InstructionsScene extends Phaser.Scene {
     const goblin = new Goblin(this, 900, 340, 'goblinWalking');
     goblin.body.setAllowGravity(false);
     goblin.shooted();
-
   }
 }
 

@@ -1,7 +1,7 @@
-import game from './mock/game'
+import game from './mock/game';
 
 test('Receive an object in return when call gameRun', () => {
-  const game = startGame();
+  const game = game.startGame();
   expect(typeof game).toBe('object');
 });
 

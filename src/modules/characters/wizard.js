@@ -70,7 +70,7 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
 
   /* eslint-disable */
   attackingComplete(animation, frame) {
-    /* eslint-enable */
+    
     switch (animation.key) {
       case 'space': {
         this.attack = false;
@@ -80,6 +80,7 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
       }
     }
   }
+  /* eslint-enable */
 
   dies() {
     this.anims.play('dies', true);
