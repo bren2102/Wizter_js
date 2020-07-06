@@ -13,8 +13,6 @@ class Orc extends Enemy {
     this.scene.add.existing(this);
     this.scene.physics.world.enableBody(this, 0);
     this.key = key;
-    this.alive = true;
-    this.setSize(200, 310);
     this.setScale(0.4);
     this.setBounce(0.2);
     this.setCollideWorldBounds(true);

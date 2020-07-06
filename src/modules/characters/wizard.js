@@ -88,6 +88,9 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
     this.isDead = true;
   }
 
+  getIsDead() {
+    return this.isDead;
+  }
   moves(direction) {
     if (this.attack === true) {
       return;

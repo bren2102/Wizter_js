@@ -30,6 +30,7 @@ class InstructionsScene extends Phaser.Scene {
     this.home = this.add.image(1080, 100, 'homeButton').setInteractive();
     this.home.on('pointerdown', () => {
       this.scene.start('menuMainScene');
+      this.scene.stop();
     });
 
     this.wizard = new Wizard(this, 650, 320, 'wizardWalking');

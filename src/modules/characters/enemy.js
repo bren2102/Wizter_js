@@ -17,7 +17,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.attackId;
     this.dieId;
     /* eslint-enable */
-    this.setSize(200, 310);
+    this.setSize(100, 310);
     this.setScale(0.4);
     this.setBounce(0.2);
     this.setCollideWorldBounds(true);
@@ -41,10 +41,10 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 
   shooted() {
+    this.dead = true;
     this.flipX = true;
     this.anims.play(this.dieId, true);
     this.setVelocityX(0);
-    this.dead = true;
   }
 
   attacks() {

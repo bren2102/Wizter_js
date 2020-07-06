@@ -1,5 +1,6 @@
 import gOverBackground from '../../assets/gameOverBackground.png';
 import scoreInput from '../../assets/html/scoreInput.html';
+import GameMainScene from './gameMainScene';
 import apiData from '../../api';
 
 /* eslint-disable */
@@ -7,7 +8,6 @@ class GameOverScene extends Phaser.Scene {
   constructor() {
     super({ key: 'gameOverScene' });
     this.points;
-    
   }
 
   preload() {
@@ -20,24 +20,32 @@ class GameOverScene extends Phaser.Scene {
 
     const inputScore = this.add.dom((this.game.scale.width / 2) + 310,
       this.game.scale.height / 2 - 20).createFromHTML(scoreInput);
-    
+
     document.clear();
-    const points = document.getElementById('score');
-    points.innerHTML = load.score;
-    const name = document.getElementById('nameInput');
-    const submitBtn = document.getElementById('submitBtn');
+
+    const points = document.querySelector('#score');
+    
+    const name = document.querySelector('#nameInput');
+    const submitBtn = document.querySelector('#submitBtn');
+    
     submitBtn.addEventListener('click', () => {
       const saveName = name.value;
       this.points = load.score;
       if (saveName.length <= 10) {
         apiData.saveData(saveName, this.points).then((result) => {
           this.scene.start('recordScene');
+          this.scene.stop();
         });
       } else {
         name.placeholder = 'Please use less than 10 letters';
       }
     });
+    points.innerHTML = load.score;
     /* eslint-enable */
+  }
+
+  update() {
+    
   }
 }
 export default GameOverScene;

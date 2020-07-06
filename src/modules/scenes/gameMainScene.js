@@ -45,7 +45,7 @@ class GameMainScene extends Phaser.Scene {
     this.backgroundImg1.setVelocityX(-100);
     this.backgroundImg2.setVelocityX(-100);
 
-    this.scoreLabel = this.add.text(20, 20, 'Score', {
+    this.scoreLabel = this.add.text(20, 20, 'Score:', {
       font: '25px Arial',
       fill: 'white',
     });
@@ -74,32 +74,42 @@ class GameMainScene extends Phaser.Scene {
         callback: () => {
           this.wizard.destroy();
           enemy.move();
-          this.scene.pause();
           this.scene.start('gameOverScene', { score: this.scorePoints });
-        },
+          this.scene.stop();},
       });
     };
     this.physics.add.collider(this.enemies, this.wizard,
       (enemy, wizard) => {
-        enemy.attacks();
-        wizard.dies();
-        wizardDead(enemy);
+        if (wizard.getIsDead() === false) {
+          enemy.attacks();
+          wizard.dies();
+          wizardDead(enemy);
+        }
       });
+
     const killEnemies = (enemy, ice) => {
-      enemy.shooted();
-      ice.destroy();
-      this.time.addEvent({
-        delay: 600,
-        callbackScope: this,
-        callback: () => {
-          enemy.destroy();
-          this.scorePoints += 15;
-          this.scoreLabel.text = `Score: ${this.scorePoints}`;
-        },
-      });
+      
+      if (enemy.getIsDead() == false) {
+        enemy.shooted();
+        ice.destroy();
+        this.scorePoints += 15;
+        this.scoreLabel.text = `Score: ${this.scorePoints}`;
+        this.time.addEvent({
+          delay: 600,
+          callbackScope: this,
+          callback: () => {
+            enemy.destroy();
+          },
+        });
+      }
     };
 
-    this.physics.add.collider(this.enemies, this.wizard.bullets, killEnemies);
+    this.physics.add.collider(this.enemies, this.wizard.bullets,
+      (enemies, bullets) => {
+        console.log(this.scorePoints);
+        killEnemies(enemies, bullets);
+      }
+      );
   }
 
   update() {

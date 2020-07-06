@@ -45,9 +45,10 @@ class RecordScene extends Phaser.Scene {
   }
 
   update() {
-    const keys = this.input.keyboard.addKeys('S, A');
+    const keys = this.input.keyboard.addKeys('A');
     if (keys.A.isDown) {
       this.scene.start('menuMainScene');
+      this.scene.stop();
     }
   }
 }

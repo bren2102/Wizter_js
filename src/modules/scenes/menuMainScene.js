@@ -30,16 +30,19 @@ class MenuMainScene extends Phaser.Scene {
     playButton.src = pGameButton;
     playButton.addEventListener('click', () => {
       this.scene.start('gameMainScene');
+      this.scene.stop();
     });
     const recordButton = document.getElementById('recordButton');
     recordButton.src = recButton;
     recordButton.addEventListener('click', () => {
       this.scene.start('recordScene');
+      this.scene.stop();
     });
     const instructionButton = document.getElementById('instructionButton');
     instructionButton.src = instButton;
     instructionButton.addEventListener('click', () => {
       this.scene.start('instructionsScene');
+      this.scene.stop();
     });
   }
 }

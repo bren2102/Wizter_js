@@ -10,8 +10,6 @@ class Goblin extends Enemy {
     this.scene.add.existing(this);
     this.scene.physics.world.enableBody(this, 0);
     this.key = key;
-    this.alive = true;
-    this.setSize(200, 310);
     this.setScale(0.4);
     this.setBounce(0.2);
     this.setCollideWorldBounds(true);
@@ -19,7 +17,7 @@ class Goblin extends Enemy {
     this.moveVelocity = -180;
     this.moveId = 'goblinRuns';
     this.dieId = 'goblinDies';
-    this.attackId = 'goblinKicks';
+    this.attackId = 'goblinAttacks';
   }
 
   static load(scene) {

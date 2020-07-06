@@ -6,14 +6,6 @@ This shooter game was built using Phase 3
 
 ## Instructions
 
-### How to play
-
-You only need to press 'left key' and 'right key' to move the wizard and use 'spacebar' to attack the enemies.
-
-Each enemy(goblin and orc) dead will give 15 points.
-
-If any of the enemies attacks you, you die and the game ends. After that, you can submit your score.
-
 ### Install
 
 - Click on ***code*** and clone with SSH
@@ -25,6 +17,14 @@ If any of the enemies attacks you, you die and the game ends. After that, you ca
 - Run 'node server.js'
 - Finally go to your browser and type **localhost:8080**
 
+### How to play
+
+You only need to press 'left key' and 'right key' to move the wizard and use 'spacebar' to attack the enemies.
+
+Each enemy(goblin and orc) dead will give 15 points.
+
+If any of the enemies attacks you, you die and the game ends. After that, you can submit your score.
+
 ## Scenes
 
 ### Main Menu
@@ -34,10 +34,10 @@ If any of the enemies attacks you, you die and the game ends. After that, you ca
 ![Game Instructions](src/assets/screenshots/instructions.png)
 
 ### Game
-![Game](src/assets/screenshots/instructions.png)
+![Game](src/assets/screenshots/game.png)
 
 ### Game Over
-![Game Over](src/assets/screenshots/instructions.png)
+![Game Over](src/assets/screenshots/gameOver.png)
 
 ### Record
 ![Record](src/assets/screenshots/instructions.png)

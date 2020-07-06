@@ -14,7 +14,7 @@ class Ice extends Phaser.Physics.Arcade.Sprite {
     this.setScale(0.1);
     this.setBounce(0.2);
     this.animation();
-    this.setCollideWorldBounds(true);
+    this.setCollideWorldBounds(false);
   }
 
   static load(scene) {
