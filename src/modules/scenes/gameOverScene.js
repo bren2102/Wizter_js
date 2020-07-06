@@ -8,28 +8,29 @@ class GameOverScene extends Phaser.Scene {
   /* eslint-enable */
   constructor() {
     super({ key: 'gameOverScene' });
+    this.points;
   }
 
   preload() {
     this.load.image('gOverBackground', gOverBackground);
   }
 
-  create() {
-    // this.scene.start('gameOverScene');
+  create(load) {
     this.gOverBackgroundImg = this.add.image(0, this.game.scale.height / 2, 'gOverBackground');
     this.gOverBackgroundImg.x = (this.game.scale.width / 2);
 
     const inputScore = this.add.dom((this.game.scale.width / 2) + 310,
       this.game.scale.height / 2 - 20).createFromHTML(scoreInput);
-    const score = document.getElementById('nameInput');
-    score.textContent = GameMainScene.getScorePoints();
-    const name = document.getElementById('nameInput').value;
+    document.clear();
+    const points = document.getElementById('score');
+     points.innerHTML = load.score;
+    const name = document.getElementById('nameInput');
     const submitBtn = document.getElementById('submitBtn');
-    const points = GameMainScene.getScorePoints;
-    console.log(GameMainScene.scorePoints);
     submitBtn.addEventListener('click', () => {
-      if (name.length <= 10) {
-        apiData.saveData(name, points).then((result) => { console.log(result) });
+      const saveName = name.value;
+      this.points = load.score
+      if (saveName.length <= 10) {
+        apiData.saveData(saveName, this.points).then((result) => { console.log(result) });
         this.scene.start('recordScene');
       }
       else {
