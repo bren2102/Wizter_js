@@ -26,6 +26,15 @@ class RecordScene extends Phaser.Scene {
     const scroll = document.getElementById('scrollSection');
 
     apiData.checkData().then((result) => {
+      result.sort(function (a,b) {
+        if (a.score > b.score) {
+          return 1;
+        }
+        if (a.score < b.score) {
+          return -1;
+        }
+        return 0
+      });
       for (let i = 0; i < result.length; i += 1) {
         const playerDiv = document.createElement('div');
         playerDiv.classList.add('player');

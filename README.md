@@ -46,7 +46,7 @@ If any of the enemies attacks you, you die and the game ends. After that, you ca
 
 - Add stages
 - Add music
-- Add multiplayer funtionality
+- Add multiplayer
 
 ## Built With
 
@@ -55,9 +55,15 @@ If any of the enemies attacks you, you die and the game ends. After that, you ca
 - HTML
 - CSS
 
+## Resources
+
+- Wizard sprites **[here]**(https://craftpix.net/freebies/wizard-character-free-sprite/)
+- Enemies sprites **[here]**(https://craftpix.net/freebies/free-orc-ogre-and-goblin-chibi-2d-game-sprites/)
+- Parallax backgrounds **[here]**(https://craftpix.net/freebies/free-horizontal-2d-game-backgrounds/)
+
 ## Live Demo
 
-[Live Demo Version](https://raw.githack.com/xtrmdarc/js-tic-tac-toe/feature/index.html)
+[Live Demo Version](https://desolate-earth-23488.herokuapp.com/)
 
 ## Testing Suite
 - Jest
