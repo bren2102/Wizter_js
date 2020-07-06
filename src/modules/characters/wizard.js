@@ -1,12 +1,10 @@
-import 'phaser';
+import Phaser from 'phaser';
 import wizardWalk from '../../assets/wizardWalk.png';
 import Ice from './ice';
 import wizardMagic from '../../assets/wizardMagic.png';
 import wizardDie from '../../assets/wizardDie.png';
 
-/* eslint-disable */
 class Wizard extends Phaser.Physics.Arcade.Sprite {
-  /* eslint-enable */
   constructor(scene, x, y, key) {
     super(scene, x, y, key);
     this.scene = scene;
@@ -78,6 +76,9 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
         ice.shooting();
         this.bullets.add(ice);
       }
+      default: {
+        break;
+      }
     }
   }
   /* eslint-enable */
@@ -91,6 +92,7 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
   getIsDead() {
     return this.isDead;
   }
+
   moves(direction) {
     if (this.attack === true) {
       return;

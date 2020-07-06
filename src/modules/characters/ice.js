@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import ice from '../../assets/ice.png';
 
 /* eslint-disable */

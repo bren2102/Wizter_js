@@ -105,9 +105,8 @@ This game includes 1 hero and 2 enemies:
 [Live Demo Version](https://desolate-earth-23488.herokuapp.com/)
 
 ## Testing Suite
-- Jest
 
-![test suite preview](./test-preview.png)
+- Jest
 
 ## NPM available scripts
 Use "npm run-script " followed by any of the following commands : 

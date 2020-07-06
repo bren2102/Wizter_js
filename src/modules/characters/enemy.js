@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 
 /* eslint-disable */
 class Enemy extends Phaser.Physics.Arcade.Sprite {

@@ -7,9 +7,6 @@ const apiData = (() => {
       fetch(request)
       .then(response => response.json()
       .then((json) => {
-        // name = json.user;
-        // score = json.score;
-        // console.log(json);
         resolve(json.result);
       }))
     })

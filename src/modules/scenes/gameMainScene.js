@@ -75,7 +75,8 @@ class GameMainScene extends Phaser.Scene {
           this.wizard.destroy();
           enemy.move();
           this.scene.start('gameOverScene', { score: this.scorePoints });
-          this.scene.stop();},
+          this.scene.stop();
+        },
       });
     };
     this.physics.add.collider(this.enemies, this.wizard,
@@ -88,8 +89,7 @@ class GameMainScene extends Phaser.Scene {
       });
 
     const killEnemies = (enemy, ice) => {
-      
-      if (enemy.getIsDead() == false) {
+      if (enemy.getIsDead() === false) {
         enemy.shooted();
         ice.destroy();
         this.scorePoints += 15;
@@ -106,10 +106,8 @@ class GameMainScene extends Phaser.Scene {
 
     this.physics.add.collider(this.enemies, this.wizard.bullets,
       (enemies, bullets) => {
-        console.log(this.scorePoints);
         killEnemies(enemies, bullets);
-      }
-      );
+      });
   }
 
   update() {

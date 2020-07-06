@@ -3,7 +3,6 @@ import menuButton from '../../assets/html/menuButton.html';
 import pGameButton from '../../assets/playButton.png';
 import instButton from '../../assets/instructionButton.png';
 import recButton from '../../assets/recordButton.png';
-// import audio from '../../assets/mainAudio.mp3'
 
 /* eslint-disable */
 class MenuMainScene extends Phaser.Scene {
@@ -15,7 +14,6 @@ class MenuMainScene extends Phaser.Scene {
   }
 
   preload() {
-    // this.load.audio('audio', audio);
     this.load.image('menuBackground', menuBackground);
   }
 

@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import recordBackground from '../../assets/recordBackground.png';
 import recordList from '../../assets/html/recordsList.html';
 import apiData from '../../api';
@@ -26,14 +27,14 @@ class RecordScene extends Phaser.Scene {
     const scroll = document.getElementById('scrollSection');
 
     apiData.checkData().then((result) => {
-      result.sort(function (a,b) {
+      result.sort((a, b) => {
         if (a.score > b.score) {
           return 1;
         }
         if (a.score < b.score) {
           return -1;
         }
-        return 0
+        return 0;
       });
       for (let i = 0; i < result.length; i += 1) {
         const playerDiv = document.createElement('div');

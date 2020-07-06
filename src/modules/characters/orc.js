@@ -1,4 +1,3 @@
-import 'phaser';
 import orcWalk from '../../assets/orcWalk2.png';
 import orcDie from '../../assets/orcDies.png';
 import orcAttack from '../../assets/orcAttack.png';

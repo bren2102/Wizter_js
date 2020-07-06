@@ -1,6 +1,5 @@
 import gOverBackground from '../../assets/gameOverBackground.png';
 import scoreInput from '../../assets/html/scoreInput.html';
-import GameMainScene from './gameMainScene';
 import apiData from '../../api';
 
 /* eslint-disable */
@@ -42,10 +41,6 @@ class GameOverScene extends Phaser.Scene {
     });
     points.innerHTML = load.score;
     /* eslint-enable */
-  }
-
-  update() {
-    
   }
 }
 export default GameOverScene;
