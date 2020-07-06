@@ -38,9 +38,9 @@ class MenuMainScene extends Phaser.Scene {
     });
     const instructionButton = document.getElementById('instructionButton');
     instructionButton.src = instButton;
-    // instructionButton.addEventListener('click', () => {
-    //   this.scene.start('gameMainScene')
-    // });
+    instructionButton.addEventListener('click', () => {
+      this.scene.start('instructionsScene')
+    });
   }
 
   // update() {

@@ -4,7 +4,8 @@
     flex-direction: column;
   }
 
-  span {
+  span,
+  h1 {
     font-size: 30px;
     padding: 10px 20px;
     margin-bottom: 20px;
@@ -27,6 +28,7 @@
 </style>
 <div>
   <span>Save your score</span>
-  <input type="text" name="scoreInput" id="scoreInput" placeholder="Your name">
-  <button>Submit</button>
+  <h1 id="score"></h1>
+  <input type="text" name="nameInput" id="nameInput" placeholder="Your name">
+  <button id="submitBtn">Submit</button>
 </div>

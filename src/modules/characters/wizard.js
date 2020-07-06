@@ -15,20 +15,11 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
     this.key = key;
     this.attack = false;
     this.isDead = false;
-    this.score = 0;
     this.bullets = this.scene.add.group();
     this.setSize(350, 380);
     this.setScale(0.4);
     this.setBounce(0.2);
     this.setCollideWorldBounds(true);
-  }
-
-  setScore(pts) {
-    this.score += pts;
-  }
-
-  getScore() {
-    return this.score;
   }
 
   static load(scene) {
@@ -60,6 +51,12 @@ class Wizard extends Phaser.Physics.Arcade.Sprite {
       frames: this.scene.anims.generateFrameNumbers('wizardMagic', { start: 0, end: 4 }),
       frameRate: 50,
       repeat: 0,
+    });
+    this.scene.anims.create({
+      key: 'attack',
+      frames: this.scene.anims.generateFrameNumbers('wizardMagic', { start: 0, end: 4 }),
+      frameRate: 50,
+      repeat: -1,
     });
     this.scene.anims.create({
       key: 'dies',

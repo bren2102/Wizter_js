@@ -75,7 +75,7 @@ class GameMainScene extends Phaser.Scene {
           this.wizard.destroy();
           enemy.move();
           this.scene.pause();
-          this.scene.start('gameOverScene');
+          this.scene.start('gameOverScene', { score: this.scorePoints });
         },
       });
     };
@@ -94,7 +94,7 @@ class GameMainScene extends Phaser.Scene {
         callback: () => {
           enemy.destroy();
           this.scorePoints += 15;
-          this.scoreLabel.text = `Score + ${this.scorePoints}`;
+          this.scoreLabel.text = `Score: ${this.scorePoints}`;
         },
       });
     };

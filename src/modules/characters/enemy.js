@@ -25,7 +25,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 
   getIsDead() {
-    this.dead;
+    return this.dead;
   }
 
   iddle() {
