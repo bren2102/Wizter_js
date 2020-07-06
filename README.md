@@ -2,11 +2,16 @@
 
 ## Description
 
-This shooter game was built using Phase 3 
+This shooter game was built using Phase 3 based on Microverse ***Javascript Capstone requirements***
+
 
 ## Instructions
 
-### Install
+### How to Install
+
+If you want to install the project follow these instructions:
+
+*Otherwise, you can play online [here](https://desolate-earth-23488.herokuapp.com/)*
 
 - Click on ***code*** and clone with SSH
 - Go to wherever you want to store the game
@@ -25,6 +30,31 @@ Each enemy(goblin and orc) dead will give 15 points.
 
 If any of the enemies attacks you, you die and the game ends. After that, you can submit your score.
 
+## Design
+
+This game includes 1 hero and 2 enemies:
+### The Hero
+<img src='src/assets/screenshots/wizard.png' style="width: 50px; margin-left: 30px;">
+
+- Name: The Wizard
+- Objective: Protect the kingdom
+- Attack: Ice <img src='src/assets/screenshots/ice.png' style="width: 20px;">
+- Weapon: Magic Wand <img src='src/assets/screenshots/magicWand.png' style="width: 30px;">
+
+### Enemy
+<img src='src/assets/screenshots/orc.png' style="width: 70px; margin-left: 20px;">
+
+- Name: Orc
+- Objective: Attack everything
+- Weapon: Mace <img src='src/assets/screenshots/mace.png' style="width: 70px;">
+
+### Enemy
+<img src='src/assets/screenshots/goblin.png' style="width: 70px; margin-left: 20px;">
+
+- Name: Goblin
+- Objective: Attack everything
+- Weapon: Axe <img src='src/assets/screenshots/axe.png' style="width: 70px;">
+
 ## Scenes
 
 ### Main Menu
@@ -40,7 +70,7 @@ If any of the enemies attacks you, you die and the game ends. After that, you ca
 ![Game Over](src/assets/screenshots/gameOver.png)
 
 ### Record
-![Record](src/assets/screenshots/instructions.png)
+![Record](src/assets/screenshots/records.png)
 
 ## Future Implementations
 
@@ -50,16 +80,25 @@ If any of the enemies attacks you, you die and the game ends. After that, you ca
 
 ## Built With
 
+- JavaScript
+- A bit of HTML and CSS for the front end
 - Phaser 3
-- JS
-- HTML
-- CSS
+- Webpack
+- Eslint
+- Babel
+- Jest
+- Express
+- Github
+- Heroku for deployment
+- Leaderboard API service for save record data
 
 ## Resources
 
-- Wizard sprites **[here]**(https://craftpix.net/freebies/wizard-character-free-sprite/)
-- Enemies sprites **[here]**(https://craftpix.net/freebies/free-orc-ogre-and-goblin-chibi-2d-game-sprites/)
-- Parallax backgrounds **[here]**(https://craftpix.net/freebies/free-horizontal-2d-game-backgrounds/)
+- Wizard sprites **[here](https://craftpix.net/freebies/wizard-character-free-sprite/)**
+- Enemies sprites **[here](https://craftpix.net/freebies/free-orc-ogre-and-goblin-chibi-2d-game-sprites/)**
+- Parallax backgrounds **[here](https://craftpix.net/freebies/free-horizontal-2d-game-backgrounds/)**
+- [Leaderboard API](https://www.notion.so/microverse/Leaderboard-API-service-24c0c3c116974ac49488d4eb0267ade3)
+- Build a space shooter with Phaser 3 **[Tutorial](https://learn.yorkcs.com/category/tutorials/gamedev/phaser-3/build-a-space-shooter-with-phaser-3/)**
 
 ## Live Demo
 
