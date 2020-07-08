@@ -4,6 +4,9 @@
 
 This shooter game was built using Phase 3 based on Microverse ***Javascript Capstone requirements***
 
+## Live Demo
+
+[Live Demo Version](https://desolate-earth-23488.herokuapp.com/)
 
 ## Instructions
 
@@ -99,10 +102,6 @@ This game includes 1 hero and 2 enemies:
 - Parallax backgrounds **[here](https://craftpix.net/freebies/free-horizontal-2d-game-backgrounds/)**
 - [Leaderboard API](https://www.notion.so/microverse/Leaderboard-API-service-24c0c3c116974ac49488d4eb0267ade3)
 - Build a space shooter with Phaser 3 **[Tutorial](https://learn.yorkcs.com/category/tutorials/gamedev/phaser-3/build-a-space-shooter-with-phaser-3/)**
-
-## Live Demo
-
-[Live Demo Version](https://desolate-earth-23488.herokuapp.com/)
 
 ## Testing Suite
 

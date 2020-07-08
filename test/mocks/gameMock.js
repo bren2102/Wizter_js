@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
-import GameMainScene from '../src/modules/scenes/gameMainScene';
-import MenuMainScene from '../src/modules/scenes/menuMainScene';
-import GameOverScene from '../src/modules/scenes/gameOverScene';
-import RecordScene from '../src/modules/scenes/recordScene';
-import InstructionsScene from '../src/modules/scenes/instructionsScene';
+import GameMainScene from '../../src/modules/scenes/gameMainScene';
+import MenuMainScene from '../../src/modules/scenes/menuMainScene';
+import GameOverScene from '../../src/modules/scenes/gameOverScene';
+import RecordScene from '../../src/modules/scenes/recordScene';
+import InstructionsScene from '../../src/modules/scenes/instructionsScene';
 
 const game = (() => {
   const config = {
