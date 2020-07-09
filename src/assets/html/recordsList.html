@@ -1,0 +1,60 @@
+<style>
+  * {
+    margin: 0;
+    box-sizing: content-box;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 360px;
+    align-items: center;
+  }
+
+  #titleSection {
+    display: flex;
+    width: 100%;
+    margin: 20px;
+    justify-content: space-around;
+    font-size: 25px;
+  }
+
+  #scrollSection {
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .player {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 10px 0;
+    justify-content: space-around;
+  }
+
+  #scrollSection::-webkit-scrollbar {
+    width: 1em;
+  }
+
+  #scrollSection::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  #scrollSection::-webkit-scrollbar-thumb {
+    background-color: rgba(231, 231, 231, 0.89);
+    outline: 1px solid rgba(245, 245, 245, 0.671);
+  }
+</style>
+<div>
+  <section id="titleSection">
+    <h1>Name</h1>
+    <h1>Score</h1>
+  </section>
+  <section id="scrollSection">
+  </section>
+</div>
